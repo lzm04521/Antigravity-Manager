@@ -83,7 +83,6 @@
     "switch_to_malay": "Switch to Malay",
     "switch_to_malay_short": "MY",
     "user_token": "User Tokens",
-    "apikey_fun": "Transit Station",
     "logout": "Logout"
   },
   "dashboard": {
@@ -711,64 +710,6 @@
           "auto": "Auto (Recommended)"
         }
       },
-      "zai": {
-        "title": "z.ai (GLM) Provider",
-        "title_tooltip": "Optional Anthropic-compatible upstream for Claude protocol. Only affects Anthropic endpoints; Google account routing remains unchanged.",
-        "subtitle": "Optional Anthropic-compatible upstream for Claude protocol only.",
-        "enabled": "Enabled",
-        "enabled_tooltip": "Enables z.ai routing for Anthropic requests according to the selected dispatch mode.",
-        "base_url": "Base URL",
-        "base_url_tooltip": "Anthropic-compatible base URL. The proxy appends paths like /v1/messages. Leave the default unless you use a custom gateway.",
-        "dispatch_mode": "Dispatch Mode",
-        "dispatch_mode_tooltip": "Controls when to use z.ai for Anthropic requests: Off disables it; All Anthropic requests forwards everything; Pooled adds z.ai as one slot in round-robin with Google accounts; Fallback uses z.ai only when there are no Google accounts.",
-        "api_key": "API Key",
-        "api_key_tooltip": "API key used to authenticate requests to z.ai. Stored locally and required for z.ai and MCP features.",
-        "api_key_placeholder": "Paste your z.ai API key here",
-        "warning": "Note: This key is stored locally in the app data directory.",
-        "models": {
-          "title": "Model Mapping",
-          "title_tooltip": "Fetch available z.ai model ids and configure how incoming Anthropic/Claude model names are translated to z.ai model ids.",
-          "refresh": "Fetch models",
-          "refreshing": "Fetching...",
-          "hint": "Available models: {{count}}. Select a suggestion or type a custom model id.",
-          "error": "Failed to fetch models: {{error}}",
-          "select_placeholder": "Select model...",
-          "opus": "Opus family → z.ai model",
-          "opus_tooltip": "Default z.ai model id used when the incoming model contains \"opus\" (e.g. claude-opus-*).",
-          "sonnet": "Sonnet family → z.ai model",
-          "sonnet_tooltip": "Default z.ai model id used for other Claude models (e.g. claude-sonnet-* and most claude-* requests).",
-          "haiku": "Haiku family → z.ai model",
-          "haiku_tooltip": "Default z.ai model id used when the incoming model contains \"haiku\" (e.g. claude-haiku-*).",
-          "advanced_title": "Advanced overrides",
-          "advanced_tooltip": "Optional exact-match overrides. If an incoming model string matches a rule key, it will be replaced with the mapped z.ai model id.",
-          "from_label": "Incoming model",
-          "to_label": "z.ai model",
-          "add_rule": "Add",
-          "empty": "No override rules configured.",
-          "from_placeholder": "From (e.g. claude-3-opus)",
-          "to_placeholder": "To (e.g. glm-4)"
-        },
-        "modes": {
-          "off": "Off",
-          "exclusive": "All Anthropic requests",
-          "pooled": "Pooled (one slot)",
-          "fallback": "Fallback only"
-        },
-        "mcp": {
-          "title": "MCP Servers (via local proxy)",
-          "title_tooltip": "Exposes optional /mcp/* endpoints on this local proxy so MCP clients can connect. Available only when the service is running, z.ai is configured, and the corresponding toggles are enabled.",
-          "enabled": "Enable MCP proxy",
-          "enabled_tooltip": "Master switch for MCP endpoints. When off, all /mcp/* routes return 404.",
-          "web_search": "Web Search",
-          "web_search_tooltip": "Exposes /mcp/web_search_prime/mcp and forwards requests to the z.ai Web Search MCP upstream.",
-          "web_reader": "Web Reader",
-          "web_reader_tooltip": "Exposes /mcp/web_reader/mcp and forwards requests to the z.ai Web Reader MCP upstream.",
-          "vision": "Vision",
-          "vision_tooltip": "Exposes /mcp/zai-mcp-server/mcp (local MCP server) that provides vision tools backed by z.ai.",
-          "local_endpoints": "Local endpoints (configure your MCP client to use these URLs):",
-          "local_endpoints_tooltip": "Use these URLs in your MCP client. They share the same host/port as the API Proxy and follow the proxy authorization policy."
-        }
-      },
       "request_timeout": "Request Timeout",
       "request_timeout_tooltip": "Maximum time (seconds) the proxy waits for an upstream response, including streaming. Increase for long generations; restart required to apply.",
       "request_timeout_hint": "Default 120s, range 30-7200s. Restart service to apply changes.",
@@ -836,103 +777,7 @@
         "context_compression_threshold_l2_tooltip": "Compresses early thinking blocks while preserving signatures. Recommended: 0.55 (55%)",
         "context_compression_threshold_l3": "L3 Compression Threshold (Summary Pivot)",
         "context_compression_threshold_l3_tooltip": "Ultimate reset: generates an XML state summary and pivots to a fresh session. Most token-efficient. Recommended: 0.7 (70%)"
-      },
-      "opencode_sync": {
-        "card_title": "OpenCode",
-        "status": {
-          "detecting": "Detecting...",
-          "installed": "Installed ({{version}})",
-          "not_installed": "Not Installed",
-          "synced": "Synced",
-          "not_synced": "Not Synced",
-          "current_base_url": "Current Base URL"
-        },
-        "sync_accounts": "Sync accounts to antigravity-accounts.json",
-        "btn_sync": "Sync Config",
-        "btn_view": "View Config",
-        "btn_restore": "Restore",
-        "btn_restore_backup": "Restore Backup",
-        "btn_clear": "Clear Config",
-        "clear_confirm_title": "Confirm Clear Config",
-        "clear_confirm_message": "Are you sure you want to clear OpenCode configuration? This will remove the config file.",
-        "toast": {
-          "config_missing": "Please generate API Key and start service first",
-          "sync_success": "OpenCode config synced successfully",
-          "sync_error": "OpenCode sync failed: {{error}}",
-          "clear_success": "OpenCode config cleared successfully",
-          "clear_error": "Failed to clear OpenCode config: {{error}}"
-        },
-        "modal": {
-          "view_title": "OpenCode Config Viewer",
-          "copy_success": "Config copied"
-        },
-        "sync_confirm_title": "Confirm Sync",
-        "sync_confirm_message": "OpenCode config will be overwritten based on current proxy settings. Continue?",
-        "restore_confirm": "Are you sure you want to restore OpenCode to default settings?",
-        "restore_backup_confirm": "Are you sure you want to restore OpenCode config from backup?",
-        "modal_title": "Select OpenCode Models",
-        "select_models": "Select models to sync",
-        "auth_plugin_warning": "Detected opencode-antigravity-auth plugin. Sync only creates provider antigravity-manager and will not overwrite the google provider/plugin.",
-        "btn_confirm_sync": "Confirm Sync",
-        "custom_base_url_label": "Custom Manager BaseURL",
-        "custom_base_url_desc": "For Docker Compose networking",
-        "custom_base_url_reset": "Reset"
-      },
-      "droid_sync": {
-        "modal_title": "Add models to Droid",
-        "modal_desc": "Selected models will be added as customModels to settings.json",
-        "selected": "selected",
-        "btn_confirm_sync": "Add selected models",
-        "toast": {
-          "no_models_selected": "Please select at least one model",
-          "sync_success_count": "Added {{count}} model(s) to Droid",
-          "sync_error": "Sync failed: {{error}}"
-        }
       }
-    },
-    "cloudflared": {
-      "title": "Public Access (Cloudflared)",
-      "subtitle": "Expose your local service to the internet via Cloudflare Tunnel",
-      "not_installed": "Cloudflared not installed",
-      "install_hint": "Cloudflared is a free tunnel tool from Cloudflare. It exposes your local proxy to the internet without a public IP or port forwarding. Click the button below to install.",
-      "install": "Install Now",
-      "installing": "Installing...",
-      "install_success": "Cloudflared installed successfully",
-      "install_failed": "Installation failed: {{error}}",
-      "installed": "Installed",
-      "version": "Version",
-      "mode_label": "Tunnel Mode",
-      "mode_quick": "Quick Tunnel",
-      "mode_quick_desc": "Auto-generated temporary URL (*.trycloudflare.com), no account needed, URL changes on restart",
-      "mode_auth": "Named Tunnel",
-      "mode_auth_desc": "Use Cloudflare account token, supports custom domain, persistent URL",
-      "token": "Tunnel Token",
-      "token_placeholder": "Paste your Cloudflare Tunnel Token here",
-      "token_hint": "Get from Cloudflare Zero Trust dashboard",
-      "token_required": "Token is required for Named Tunnel mode",
-      "use_http2": "Use HTTP/2",
-      "use_http2_desc": "More compatible, recommended for China mainland",
-      "status_label": "Tunnel Status",
-      "status_stopped": "Stopped",
-      "status_starting": "Starting...",
-      "status_running": "Running",
-      "status_stopping": "Stopping...",
-      "status_error": "Error",
-      "public_url": "Public URL",
-      "public_url_placeholder": "Public URL will appear here after tunnel starts",
-      "copy_url": "Copy URL",
-      "url_copied": "URL copied",
-      "start_tunnel": "Start Tunnel",
-      "stop_tunnel": "Stop Tunnel",
-      "running": "Tunnel Running",
-      "started": "Tunnel started",
-      "stopped": "Tunnel stopped",
-      "start_failed": "Start failed: {{error}}",
-      "stop_failed": "Stop failed: {{error}}",
-      "require_proxy_running": "Please start the local proxy service first",
-      "connection_info": "Connection Info",
-      "local_port": "Local Port",
-      "tunnel_protocol": "Tunnel Protocol"
     },
     "example": {
       "title": "Usage Examples",
@@ -1108,36 +953,6 @@
       "model_id": "Model ID",
       "description": "Description",
       "action": "Action"
-    },
-    "cli_sync": {
-      "title": "One-click CLI Sync",
-      "subtitle": "Quickly sync current API endpoints and keys to your local AI CLI tools.",
-      "card_title": "{{name}} Config",
-      "status": {
-        "not_installed": "Not detected",
-        "installed": "v{{version}}",
-        "synced": "Pointed to this app",
-        "not_synced": "Not synced",
-        "detecting": "Detecting...",
-        "current_base_url": "Current Base URL"
-      },
-      "model_select": "Select Model",
-      "btn_sync": "Sync Config Now",
-      "btn_view": "View Config",
-      "btn_restore": "Restore Defaults",
-      "btn_restore_backup": "Restore Backup",
-      "restore_confirm": "Are you sure you want to restore the configuration for {{name}} to the official default URL?",
-      "restore_backup_confirm": "Backup configuration found. Are you sure you want to restore it?",
-      "modal": {
-        "view_title": "{{name}} Config Content",
-        "copy_success": "Config content copied"
-      },
-      "toast": {
-        "sync_success": "Sync successful! {{name}} is ready.",
-        "sync_error": "Sync failed: {{error}}"
-      },
-      "sync_confirm_title": "Sync Confirmation",
-      "sync_confirm_message": "Ready to sync {{name}} configuration. ⚠️ Warning: This will overwrite your existing local configuration files (e.g. login tokens, API Keys). Are you sure you want to continue?"
     }
   },
   "monitor": {

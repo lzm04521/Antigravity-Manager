@@ -98,7 +98,6 @@
     "switch_to_malay": "Alternar para Malaio",
     "switch_to_malay_short": "MY",
     "user_token": "Tokens de usuário",
-    "apikey_fun": "ApiKey.fun",
     "logout": "Sair",
     "more": "Mais",
     "mini_view": "Visualização Compacta"
@@ -743,64 +742,6 @@
           "auto": "Automático (Recomendado)"
         }
       },
-      "zai": {
-        "title": "Provedor z.ai (GLM)",
-        "title_tooltip": "Upstream compatível com Anthropic opcional para protocolo Claude. Afeta apenas endpoints Anthropic; o roteamento de conta do Google permanece inalterado.",
-        "subtitle": "Upstream compatível com Anthropic opcional apenas para protocolo Claude.",
-        "enabled": "Habilitado",
-        "enabled_tooltip": "Habilita o roteamento z.ai para solicitações Anthropic de acordo com o modo de despacho selecionado.",
-        "base_url": "URL Base",
-        "base_url_tooltip": "URL base compatível com Anthropic. O proxy anexa caminhos como /v1/messages. Deixe o padrão a menos que use um gateway personalizado.",
-        "dispatch_mode": "Modo de Despacho",
-        "dispatch_mode_tooltip": "Controla quando usar z.ai para solicitações Anthropic: Off desabilita; All Anthropic requests encaminha tudo; Pooled adiciona z.ai como um slot em round-robin com contas do Google; Fallback usa z.ai apenas quando não há contas do Google.",
-        "api_key": "Chave da API",
-        "api_key_tooltip": "Chave da API usada para autenticar solicitações para z.ai. Armazenada localmente e necessária para recursos z.ai e MCP.",
-        "api_key_placeholder": "Cole sua chave de API z.ai aqui",
-        "warning": "Nota: Esta chave é armazenada localmente no diretório de dados do aplicativo.",
-        "models": {
-          "title": "Mapeamento de Modelos",
-          "title_tooltip": "Buscar IDs de modelos z.ai disponíveis e configurar como os nomes de modelos Anthropic/Claude recebidos são traduzidos para IDs de modelos z.ai.",
-          "refresh": "Buscar modelos",
-          "refreshing": "Buscando...",
-          "hint": "Modelos disponíveis: {{count}}. Selecione uma sugestão ou digite um ID de modelo personalizado.",
-          "error": "Falha ao buscar modelos: {{error}}",
-          "select_placeholder": "Selecionar modelo...",
-          "opus": "Família Opus → modelo z.ai",
-          "opus_tooltip": "ID de modelo z.ai padrão usado quando o modelo recebido contém \"opus\" (ex: claude-opus-*).",
-          "sonnet": "Família Sonnet → modelo z.ai",
-          "sonnet_tooltip": "ID de modelo z.ai padrão usado para outros modelos Claude (ex: claude-sonnet-* e a maioria das solicitações claude-*).",
-          "haiku": "Família Haiku → modelo z.ai",
-          "haiku_tooltip": "ID de modelo z.ai padrão usado quando o modelo recebido contém \"haiku\" (ex: claude-haiku-*).",
-          "advanced_title": "Substituições avançadas",
-          "advanced_tooltip": "Substituições de correspondência exata opcionais. Se uma string de modelo recebida corresponder a uma chave de regra, será substituída pelo ID de modelo z.ai mapeado.",
-          "from_label": "Modelo recebido",
-          "to_label": "Modelo z.ai",
-          "add_rule": "Adicionar",
-          "empty": "Nenhuma regra de substituição configurada.",
-          "from_placeholder": "Do (ex: claude-3-opus)",
-          "to_placeholder": "Para (ex: glm-4)"
-        },
-        "modes": {
-          "off": "Desligado",
-          "exclusive": "Todas as solicitações Anthropic",
-          "pooled": "Em pool (um slot)",
-          "fallback": "Apenas fallback"
-        },
-        "mcp": {
-          "title": "Servidores MCP (via proxy local)",
-          "title_tooltip": "Expõe endpoints opcionais /mcp/* neste proxy local para que clientes MCP possam se conectar. Disponível apenas quando o serviço está em execução, z.ai está configurado e os toggles correspondentes estão habilitados.",
-          "enabled": "Habilitar proxy MCP",
-          "enabled_tooltip": "Interruptor mestre para endpoints MCP. Quando desligado, todas as rotas /mcp/* retornam 404.",
-          "web_search": "Pesquisa na Web",
-          "web_search_tooltip": "Expõe /mcp/web_search_prime/mcp e encaminha solicitações para o upstream MCP Web Search do z.ai.",
-          "web_reader": "Leitor Web",
-          "web_reader_tooltip": "Expõe /mcp/web_reader/mcp e encaminha solicitações para o upstream MCP Web Reader do z.ai.",
-          "vision": "Visão",
-          "vision_tooltip": "Expõe /mcp/zai-mcp-server/mcp (servidor MCP local) que fornece ferramentas de visão apoiadas por z.ai.",
-          "local_endpoints": "Endpoints locais (configure seu cliente MCP para usar estes URLs):",
-          "local_endpoints_tooltip": "Use estes URLs no seu cliente MCP. Eles compartilham o mesmo host/porta do Proxy da API e seguem a política de autorização do proxy."
-        }
-      },
       "request_timeout": "Tempo Limite de Requisição (s)",
       "request_timeout_tooltip": "Tempo máximo (segundos) que o proxy aguarda por uma resposta upstream, incluindo streaming. Aumente para gerações longas; reinício necessário para aplicar.",
       "request_timeout_hint": "Padrão 120s, intervalo 30-7200s. Reinicie o serviço para aplicar alterações.",
@@ -875,103 +816,7 @@
         "context_compression_threshold_l3": "Limiar de Compressão L3 (Pivô de Resumo)",
         "context_compression_threshold_l3_tooltip": "Gera um resumo de estado XML e pivota para uma nova sessão. Recomendado: 0.7 (70%)"
       },
-      "opencode_sync": {
-        "card_title": "Sincronização OpenCode",
-        "status": {
-          "detecting": "Detectando...",
-          "installed": "Instalado ({{version}})",
-          "not_installed": "Não Instalado",
-          "synced": "Sincronizado",
-          "not_synced": "Não Sincronizado",
-          "current_base_url": "Base URL Atual"
-        },
-        "sync_accounts": "Sincronizar Contas",
-        "btn_sync": "Sincronizar com OpenCode",
-        "btn_view": "Visualizar Configuração",
-        "btn_restore": "Restaurar Padrão",
-        "btn_restore_backup": "Restaurar Backup",
-        "btn_clear": "Limpar Configuração",
-        "clear_confirm_title": "Confirmar Limpeza de Configuração",
-        "clear_confirm_message": "Tem certeza de que deseja limpar as configurações do provedor Antigravity no OpenCode?",
-        "toast": {
-          "config_missing": "Arquivo de configuração do OpenCode não encontrado",
-          "sync_success": "Configurações sincronizadas com sucesso no OpenCode!",
-          "sync_error": "Erro ao sincronizar com OpenCode: {{error}}",
-          "clear_success": "Configuração do OpenCode limpa com sucesso!",
-          "clear_error": "Erro ao limpar configuração do OpenCode: {{error}}"
-        },
-        "modal": {
-          "view_title": "Configuração Atual do OpenCode",
-          "copy_success": "Configuração copiada para a área de transferência!"
-        },
-        "sync_confirm_title": "Confirmar Sincronização",
-        "sync_confirm_message": "Isso atualizará a configuração do OpenCode para apontar para o proxy Antigravity local. Deseja continuar?",
-        "restore_confirm": "Deseja restaurar a configuração do OpenCode para os valores padrão?",
-        "restore_backup_confirm": "Deseja restaurar a configuração do OpenCode a partir do backup anterior?",
-        "modal_title": "Configurar Sincronização OpenCode",
-        "select_models": "Selecionar Modelos para Sincronizar",
-        "auth_plugin_warning": "Aviso: Se você estiver usando plugins de autenticação no OpenCode, desative-os para evitar conflitos.",
-        "btn_confirm_sync": "Confirmar e Sincronizar",
-        "custom_base_url_label": "Base URL Personalizada (Opcional)",
-        "custom_base_url_desc": "Especifique uma URL personalizada caso esteja executando o proxy em outra máquina ou contêiner",
-        "custom_base_url_reset": "Restaurar URL Local"
-      },
-      "droid_sync": {
-        "modal_title": "Sincronização com Factory Droid",
-        "modal_desc": "Selecione os modelos a serem exportados para o assistente Factory Droid",
-        "selected": "selecionado(s)",
-        "btn_confirm_sync": "Sincronizar com Droid",
-        "toast": {
-          "no_models_selected": "Por favor, selecione pelo menos um modelo para sincronizar",
-          "sync_success_count": "Sucesso! {{count}} modelo(s) sincronizados com o Droid",
-          "sync_error": "Erro ao sincronizar com Droid: {{error}}"
-        }
-      },
       "thinking_budget": "Orçamento de Raciocínio (Thinking Budget)"
-    },
-    "cloudflared": {
-      "title": "Túnel Cloudflare (Cloudflared)",
-      "subtitle": "Exponha seu proxy local com segurança na internet através do Cloudflare Zero Trust",
-      "not_installed": "Cloudflared não instalado",
-      "install_hint": "O binário do Cloudflared não foi detectado no sistema. Clique abaixo para instalar automaticamente.",
-      "install": "Instalar Cloudflared",
-      "installing": "Instalando Cloudflared...",
-      "install_success": "Cloudflared instalado com sucesso!",
-      "install_failed": "Falha na instalação do Cloudflared: {{error}}",
-      "installed": "Cloudflared instalado e pronto",
-      "version": "Versão",
-      "mode_label": "Modo do Túnel",
-      "mode_quick": "Túnel Rápido (Sem Login)",
-      "mode_quick_desc": "Gera um subdomínio temporário trycloudflare.com sem necessidade de conta",
-      "mode_auth": "Túnel Nomeado (Com Token)",
-      "mode_auth_desc": "Usa um túnel persistente com seu próprio domínio configurado no Cloudflare Zero Trust",
-      "token": "Token do Túnel",
-      "token_placeholder": "Cole o token do seu túnel Cloudflare aqui",
-      "token_hint": "Obtenha seu token no painel Cloudflare Zero Trust > Networks > Tunnels",
-      "token_required": "O token do túnel é obrigatório no modo nomeado",
-      "use_http2": "Forçar Protocolo HTTP/2",
-      "use_http2_desc": "Utiliza transporte HTTP/2 em vez de QUIC caso o provedor bloqueie UDP",
-      "status_label": "Status da Conexão",
-      "status_stopped": "Parado",
-      "status_starting": "Iniciando...",
-      "status_running": "Conectado",
-      "status_stopping": "Parando...",
-      "status_error": "Erro no Túnel",
-      "public_url": "URL Pública do Túnel",
-      "public_url_placeholder": "Aguardando geração do link público do túnel...",
-      "copy_url": "Copiar URL Pública",
-      "url_copied": "URL pública copiada para a área de transferência!",
-      "start_tunnel": "Iniciar Túnel",
-      "stop_tunnel": "Parar Túnel",
-      "running": "Túnel em execução",
-      "started": "Túnel iniciado com sucesso!",
-      "stopped": "Túnel finalizado",
-      "start_failed": "Falha ao iniciar o túnel: {{error}}",
-      "stop_failed": "Falha ao parar o túnel: {{error}}",
-      "require_proxy_running": "O proxy local precisa estar em execução antes de iniciar o túnel Cloudflare",
-      "connection_info": "Informações de Conexão",
-      "local_port": "Porta Local",
-      "tunnel_protocol": "Protocolo do Túnel"
     },
     "example": {
       "title": "Exemplos de Uso",
@@ -1147,59 +992,6 @@
       "model_id": "ID do Modelo",
       "description": "Descrição",
       "action": "Ação"
-    },
-    "cli_sync": {
-      "title": "Sincronização de Ferramentas CLI",
-      "subtitle": "Sincronize a URL e chave da API com suas ferramentas de CLI de IA",
-      "card_title": "Config {{name}}",
-      "status": {
-        "not_installed": "Não instalado",
-        "installed": "v{{version}}",
-        "synced": "Apontado para este app",
-        "not_synced": "Não sincronizado",
-        "detecting": "Detectando...",
-        "current_base_url": "URL Base Atual"
-      },
-      "model_select": "Seleção de Modelos para Exportação",
-      "btn_sync": "Sincronizar Agora",
-      "btn_view": "Ver Config",
-      "btn_restore": "Restaurar Padrão",
-      "btn_restore_backup": "Restaurar Backup",
-      "restore_confirm": "Tem certeza que deseja restaurar a config de {{name}} para o padrão?",
-      "restore_backup_confirm": "Configuração de backup encontrada. Tem certeza de que deseja restaurá-la?",
-      "modal": {
-        "view_title": "Conteúdo do arquivo {{name}}",
-        "copy_success": "Copiado para a área de transferência"
-      },
-      "toast": {
-        "sync_success": "Sucesso! {{name}} está pronto.",
-        "sync_error": "Falha na sincronização: {{error}}",
-        "config_missing": "Gere uma Chave de API e inicie o serviço primeiro"
-      },
-      "sync_confirm_title": "Confirmação de Sincronização",
-      "sync_confirm_message": "Pronto para sincronizar a configuração do {{name}}. ⚠️ Aviso: Isso substituirá seus arquivos de configuração local existentes (como tokens de login, chaves de API). Tem certeza de que deseja continuar?"
-    },
-    "opencode_sync": {
-      "toast": {
-        "clear_success": "Configuração do OpenCode limpa com sucesso",
-        "clear_error": "Erro ao limpar configuração do OpenCode: {{error}}",
-        "sync_success": "Sincronizado com OpenCode com sucesso"
-      },
-      "sync_accounts": "Sincronizar contas para antigravity-accounts.json",
-      "btn_clear": "Limpar",
-      "clear_confirm_title": "Limpar Configuração do OpenCode",
-      "clear_confirm_message": "Isso removerá todas as configurações do OpenCode, incluindo definições legadas. Tem certeza?"
-    },
-    "droid_sync": {
-      "toast": {
-        "no_models_selected": "Por favor, selecione pelo menos um modelo",
-        "sync_success_count": "Adicionado(s) {{count}} modelo(s) ao Droid",
-        "sync_error": "Falha na sincronização: {{error}}"
-      },
-      "modal_title": "Adicionar Modelos ao Droid",
-      "select_models": "Selecione os modelos para adicionar",
-      "no_models": "Selecione os modelos na lista acima para adicionar",
-      "btn_confirm_sync": "Gravar Configuração"
     }
   },
   "monitor": {

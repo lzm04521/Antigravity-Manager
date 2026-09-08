@@ -83,7 +83,6 @@
     "switch_to_malay": "말레이어로 전환",
     "switch_to_malay_short": "MY",
     "user_token": "사용자 토큰",
-    "apikey_fun": "API 중계소",
     "logout": "로그아웃"
   },
   "dashboard": {
@@ -711,64 +710,6 @@
           "auto": "자동 (권장)"
         }
       },
-      "zai": {
-        "title": "z.ai (GLM) 공급자",
-        "title_tooltip": "Claude 프로토콜을 위한 선택적 Anthropic 호환 업스트림입니다. Anthropic 엔드포인트에만 영향을 미치며 Google 계정 라우팅은 변경되지 않습니다.",
-        "subtitle": "Claude 프로토콜 전용 선택적 Anthropic 호환 업스트림.",
-        "enabled": "활성화됨",
-        "enabled_tooltip": "선택한 디스패치 모드에 따라 Anthropic 요청에 대해 z.ai 라우팅을 활성화합니다.",
-        "base_url": "기본 URL",
-        "base_url_tooltip": "Anthropic 호환 기본 URL입니다. 프록시는 /v1/messages와 같은 경로를 추가합니다. 사용자 지정 게이트웨이를 사용하지 않는 한 기본값을 유지하세요.",
-        "dispatch_mode": "디스패치 모드",
-        "dispatch_mode_tooltip": "Anthropic 요청에 z.ai를 사용하는 시점을 제어합니다: 끄기 = 사용 안 함; 모든 Anthropic 요청 = 모든 것을 전달; 풀링됨 = Google 계정과 라운드 로빈으로 z.ai를 하나의 슬롯으로 추가; 대체 = Google 계정이 없을 때만 z.ai 사용.",
-        "api_key": "API 키",
-        "api_key_tooltip": "z.ai 요청 인증에 사용되는 API 키입니다. 로컬에 저장되며 z.ai 및 MCP 기능에 필요합니다.",
-        "api_key_placeholder": "여기에 z.ai API 키를 붙여넣으세요",
-        "warning": "참고: 이 키는 앱 데이터 디렉토리에 로컬로 저장됩니다.",
-        "models": {
-          "title": "모델 매핑",
-          "title_tooltip": "사용 가능한 z.ai 모델 ID를 가져오고 들어오는 Anthropic/Claude 모델 이름이 z.ai 모델 ID로 변환되는 방식을 구성합니다.",
-          "refresh": "모델 가져오기",
-          "refreshing": "가져오는 중...",
-          "hint": "사용 가능한 모델: {{count}}. 제안을 선택하거나 사용자 지정 모델 ID를 입력하세요.",
-          "error": "모델 가져오기 실패: {{error}}",
-          "select_placeholder": "모델 선택...",
-          "opus": "Opus 제품군 → z.ai 모델",
-          "opus_tooltip": "들어오는 모델에 \"opus\"가 포함된 경우 (예: claude-opus-*) 사용되는 기본 z.ai 모델 ID입니다.",
-          "sonnet": "Sonnet 제품군 → z.ai 모델",
-          "sonnet_tooltip": "다른 Claude 모델 (예: claude-sonnet-* 및 대부분의 claude-* 요청)에 사용되는 기본 z.ai 모델 ID입니다.",
-          "haiku": "Haiku 제품군 → z.ai 모델",
-          "haiku_tooltip": "들어오는 모델에 \"haiku\"가 포함된 경우 (예: claude-haiku-*) 사용되는 기본 z.ai 모델 ID입니다.",
-          "advanced_title": "고급 재정의",
-          "advanced_tooltip": "선택적 정확한 일치 재정의. 들어오는 모델 문자열이 규칙 키와 일치하면 매핑된 z.ai 모델 ID로 대체됩니다.",
-          "from_label": "들어오는 모델",
-          "to_label": "z.ai 모델",
-          "add_rule": "추가",
-          "empty": "구성된 재정의 규칙이 없습니다.",
-          "from_placeholder": "From (예: claude-3-opus)",
-          "to_placeholder": "To (예: glm-4)"
-        },
-        "modes": {
-          "off": "끄기",
-          "exclusive": "모든 Anthropic 요청",
-          "pooled": "풀링됨 (한 슬롯)",
-          "fallback": "대체 전용"
-        },
-        "mcp": {
-          "title": "MCP 서버 (로컬 프록시 경유)",
-          "title_tooltip": "MCP 클라이언트가 연결할 수 있도록 이 로컬 프록시에 선택적 /mcp/* 엔드포인트를 노출합니다. 서비스가 실행 중이고, z.ai가 구성되어 있고, 해당 토글이 활성화된 경우에만 사용할 수 있습니다.",
-          "enabled": "MCP 프록시 활성화",
-          "enabled_tooltip": "MCP 엔드포인트의 마스터 스위치입니다. 꺼져 있으면 모든 /mcp/* 경로가 404를 반환합니다.",
-          "web_search": "웹 검색",
-          "web_search_tooltip": "/mcp/web_search_prime/mcp를 노출하고 z.ai 웹 검색 MCP 업스트림으로 요청을 전달합니다.",
-          "web_reader": "웹 리더",
-          "web_reader_tooltip": "/mcp/web_reader/mcp를 노출하고 z.ai 웹 리더 MCP 업스트림으로 요청을 전달합니다.",
-          "vision": "비전",
-          "vision_tooltip": "z.ai가 지원하는 비전 도구를 제공하는 /mcp/zai-mcp-server/mcp (로컬 MCP 서버)를 노출합니다.",
-          "local_endpoints": "로컬 엔드포인트 (MCP 클라이언트가 이 URL을 사용하도록 설정):",
-          "local_endpoints_tooltip": "MCP 클라이언트에서 이 URL을 사용하세요. API 프록시와 동일한 호스트/포트를 공유하며 프록시 인증 정책을 따릅니다."
-        }
-      },
       "request_timeout": "요청 시간 초과",
       "request_timeout_tooltip": "스트리밍을 포함하여 프록시가 업스트림 응답을 기다리는 최대 시간(초)입니다. 긴 생성을 위해 늘리십시오. 적용하려면 다시 시작해야 합니다.",
       "request_timeout_hint": "기본값 120초, 범위 30-7200초. 변경 사항 적용을 위해 서비스 다시 시작 필요.",
@@ -836,103 +777,7 @@
         "context_compression_threshold_l2_tooltip": "서명을 보존하면서 초기 생각 블록을 압축합니다. 권장: 0.55 (55%)",
         "context_compression_threshold_l3": "L3 압축 임계값 (요약 피벗)",
         "context_compression_threshold_l3_tooltip": "궁극적인 재설정: XML 상태 요약을 생성하고 새 세션으로 피벗합니다. 가장 효율적인 토큰 사용. 권장: 0.7 (70%)"
-      },
-      "opencode_sync": {
-        "card_title": "OpenCode",
-        "status": {
-          "detecting": "감지 중...",
-          "installed": "설치됨 ({{version}})",
-          "not_installed": "설치되지 않음",
-          "synced": "동기화됨",
-          "not_synced": "동기화되지 않음",
-          "current_base_url": "현재 기본 URL"
-        },
-        "sync_accounts": "계정을 antigravity-accounts.json에 동기화",
-        "btn_sync": "설정 동기화",
-        "btn_view": "설정 보기",
-        "btn_restore": "복원",
-        "btn_restore_backup": "백업 복원",
-        "btn_clear": "설정 지우기",
-        "clear_confirm_title": "설정 삭제 확인",
-        "clear_confirm_message": "OpenCode 설정을 지우시겠습니까? 설정 파일이 삭제됩니다.",
-        "toast": {
-          "config_missing": "먼저 API 키를 생성하고 서비스를 시작해 주세요",
-          "sync_success": "OpenCode 설정이 성공적으로 동기화되었습니다",
-          "sync_error": "OpenCode 동기화 실패: {{error}}",
-          "clear_success": "OpenCode 설정이 삭제되었습니다",
-          "clear_error": "OpenCode 설정 삭제 실패: {{error}}"
-        },
-        "modal": {
-          "view_title": "OpenCode 설정 보기",
-          "copy_success": "설정이 복사되었습니다"
-        },
-        "sync_confirm_title": "동기화 확인",
-        "sync_confirm_message": "현재 프록시 설정에 따라 OpenCode 설정이 덮어쓰기됩니다. 계속하시겠습니까?",
-        "restore_confirm": "OpenCode를 기본 설정으로 복원하시겠습니까?",
-        "restore_backup_confirm": "백업에서 OpenCode 설정을 복원하시겠습니까?",
-        "modal_title": "OpenCode 모델 선택",
-        "select_models": "동기화할 모델 선택",
-        "auth_plugin_warning": "opencode-antigravity-auth 플러그인이 감지되었습니다. 동기화는 antigravity-manager provider만 생성하며 google provider/플러그인은 덮어쓰지 않습니다.",
-        "btn_confirm_sync": "동기화 확인",
-        "custom_base_url_label": "사용자 지정 Manager BaseURL",
-        "custom_base_url_desc": "Docker Compose 네트워킹용",
-        "custom_base_url_reset": "초기화"
-      },
-      "droid_sync": {
-        "modal_title": "Droid에 모델 추가",
-        "modal_desc": "선택한 모델이 settings.json에 customModels로 추가됩니다",
-        "selected": "선택됨",
-        "btn_confirm_sync": "선택한 모델 추가",
-        "toast": {
-          "no_models_selected": "최소 하나 이상의 모델을 선택해 주세요",
-          "sync_success_count": "Droid에 {{count}}개 모델을 추가했습니다",
-          "sync_error": "동기화 실패: {{error}}"
-        }
       }
-    },
-    "cloudflared": {
-      "title": "공개 액세스 (Cloudflared)",
-      "subtitle": "Cloudflare 터널을 통해 로컬 서비스를 인터넷에 노출",
-      "not_installed": "Cloudflared가 설치되지 않음",
-      "install_hint": "Cloudflared는 Cloudflare의 무료 터널 도구입니다. 공용 IP나 포트 포워딩 없이 로컬 프록시를 인터넷에 노출합니다. 아래 버튼을 클릭하여 설치하세요.",
-      "install": "지금 설치",
-      "installing": "설치 중...",
-      "install_success": "Cloudflared 설치 성공",
-      "install_failed": "설치 실패: {{error}}",
-      "installed": "설치됨",
-      "version": "버전",
-      "mode_label": "터널 모드",
-      "mode_quick": "빠른 터널",
-      "mode_quick_desc": "자동 생성된 임시 URL (*.trycloudflare.com), 계정 필요 없음, 재시작 시 URL 변경됨",
-      "mode_auth": "네임드 터널",
-      "mode_auth_desc": "Cloudflare 계정 토큰 사용, 사용자 지정 도메인 지원, 영구 URL",
-      "token": "터널 토큰",
-      "token_placeholder": "여기에 Cloudflare 터널 토큰을 붙여넣으세요",
-      "token_hint": "Cloudflare Zero Trust 대시보드에서 가져오기",
-      "token_required": "네임드 터널 모드에는 토큰이 필요합니다",
-      "use_http2": "HTTP/2 사용",
-      "use_http2_desc": "더 높은 호환성, 중국 본토 권장",
-      "status_label": "터널 상태",
-      "status_stopped": "중지됨",
-      "status_starting": "시작 중...",
-      "status_running": "실행 중",
-      "status_stopping": "중지 중...",
-      "status_error": "오류",
-      "public_url": "공개 URL",
-      "public_url_placeholder": "터널이 시작되면 여기에 공개 URL이 표시됩니다",
-      "copy_url": "URL 복사",
-      "url_copied": "URL 복사됨",
-      "start_tunnel": "터널 시작",
-      "stop_tunnel": "터널 중지",
-      "running": "터널 실행 중",
-      "started": "터널 시작됨",
-      "stopped": "터널 중지됨",
-      "start_failed": "시작 실패: {{error}}",
-      "stop_failed": "중지 실패: {{error}}",
-      "require_proxy_running": "먼저 로컬 프록시 서비스를 시작해주세요",
-      "connection_info": "연결 정보",
-      "local_port": "로컬 포트",
-      "tunnel_protocol": "터널 프로토콜"
     },
     "example": {
       "title": "사용 예제",
@@ -1108,36 +953,6 @@
       "model_id": "모델 ID",
       "description": "설명",
       "action": "작업"
-    },
-    "cli_sync": {
-      "title": "원클릭 CLI 동기화",
-      "subtitle": "현재 API 엔드포인트와 키를 로컬 AI CLI 도구에 빠르게 동기화합니다.",
-      "card_title": "{{name}} 구성",
-      "status": {
-        "not_installed": "감지되지 않음",
-        "installed": "v{{version}}",
-        "synced": "이 앱을 가리킴",
-        "not_synced": "동기화되지 않음",
-        "detecting": "감지 중...",
-        "current_base_url": "현재 기본 URL"
-      },
-      "model_select": "모델 선택",
-      "btn_sync": "지금 설정 동기화",
-      "btn_view": "구성 보기",
-      "btn_restore": "기본값 복원",
-      "btn_restore_backup": "백업 복원",
-      "restore_confirm": "{{name}}의 구성을 공식 기본 URL로 복원하시겠습니까?",
-      "restore_backup_confirm": "백업 구성을 찾았습니다. 복원하시겠습니까?",
-      "modal": {
-        "view_title": "{{name}} 구성 내용",
-        "copy_success": "구성 내용 복사됨"
-      },
-      "toast": {
-        "sync_success": "동기화 성공! {{name}}이(가) 준비되었습니다.",
-        "sync_error": "동기화 실패: {{error}}"
-      },
-      "sync_confirm_title": "동기화 확인",
-      "sync_confirm_message": "{{name}} 구성을 동기화할 준비가 되었습니다. ⚠️ 경고: 이 작업은 기존 로컬 구성 파일(예: 로그인 토큰, API 키)을 덮어씁니다. 계속하시겠습니까?"
     }
   },
   "monitor": {

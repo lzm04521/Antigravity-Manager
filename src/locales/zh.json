@@ -80,7 +80,6 @@
     "switch_to_malay": "切换到马来语",
     "switch_to_malay_short": "MY",
     "user_token": "用户 Token",
-    "apikey_fun": "中转站",
     "logout": "登出"
   },
   "dashboard": {
@@ -704,64 +703,6 @@
           "auto": "自动（推荐）"
         }
       },
-      "zai": {
-        "title": "z.ai（GLM）提供商",
-        "title_tooltip": "为 Claude 协议提供可选的 Anthropic 兼容上游（z.ai）。只影响 Claude 协议请求，Google 账号池仍按原逻辑工作。",
-        "subtitle": "可选的 Anthropic 兼容上游，仅用于 Claude 协议请求。",
-        "enabled": "已启用",
-        "enabled_tooltip": "启用后，Claude 协议请求将按“分发模式”路由到 z.ai。",
-        "base_url": "Base URL",
-        "base_url_tooltip": "z.ai Anthropic 兼容接口的基础地址。默认 https://api.z.ai/api/anthropic，代理会在其后拼接 /v1/messages 等路径。",
-        "dispatch_mode": "分发模式",
-        "dispatch_mode_tooltip": "控制何时使用 z.ai：关闭=不使用；全部 Claude 请求=所有 /v1/messages 等都转发到 z.ai；加入队列=把 z.ai 当作队列中的 1 个槽位按轮询分配；仅兜底=仅当没有可用 Google 账号时才使用。",
-        "api_key": "API Key",
-        "api_key_tooltip": "用于调用 z.ai 上游的 API Key（本地存储）。启用 z.ai 或 MCP 功能前必须配置。",
-        "api_key_placeholder": "在此粘贴 z.ai API Key",
-        "warning": "提示：该 Key 将保存在本机应用数据目录中。",
-        "models": {
-          "title": "模型映射",
-          "title_tooltip": "从 z.ai 拉取可用模型 ID，并配置如何把 Claude/Anthropic 的 model 名称转换为 z.ai 的模型 ID。",
-          "refresh": "拉取模型",
-          "refreshing": "拉取中...",
-          "hint": "可用模型：{{count}}。可从建议中选择，或手动输入自定义模型 ID。",
-          "error": "拉取模型失败：{{error}}",
-          "select_placeholder": "选择模型...",
-          "opus": "Opus 家族 → z.ai 模型",
-          "opus_tooltip": "当请求的 model 包含“opus”（如 claude-opus-*）时默认使用的 z.ai 模型 ID。",
-          "sonnet": "Sonnet 家族 → z.ai 模型",
-          "sonnet_tooltip": "其他 Claude 模型（如 claude-sonnet-* 以及大多数 claude-*）默认使用的 z.ai 模型 ID。",
-          "haiku": "Haiku 家族 → z.ai 模型",
-          "haiku_tooltip": "当请求的 model 包含“haiku”（如 claude-haiku-*）时默认使用的 z.ai 模型 ID。",
-          "advanced_title": "高级覆盖规则",
-          "advanced_tooltip": "可选的精确匹配覆盖规则：如果 incoming model 字符串与规则键完全一致，则替换为对应的 z.ai 模型 ID。",
-          "from_label": "incoming model",
-          "to_label": "z.ai 模型",
-          "add_rule": "添加",
-          "empty": "尚未配置自定义替换规则。",
-          "from_placeholder": "源模型 (如 claude-3-opus)",
-          "to_placeholder": "映射至 (如 glm-4)"
-        },
-        "modes": {
-          "off": "关闭",
-          "exclusive": "全部 Claude 请求走 z.ai",
-          "pooled": "加入队列（占 1 个槽位）",
-          "fallback": "仅兜底"
-        },
-        "mcp": {
-          "title": "MCP 服务（通过本地代理）",
-          "title_tooltip": "在本地代理上暴露可选的 /mcp/* 端点，供 MCP 客户端直连。仅在服务运行、z.ai 配置完成且对应开关开启时可用。",
-          "enabled": "启用 MCP 反代",
-          "enabled_tooltip": "MCP 端点总开关；关闭时所有 /mcp/* 路由将返回 404。",
-          "web_search": "网页搜索",
-          "web_search_tooltip": "启用后开放 /mcp/web_search_prime/mcp，并转发到 z.ai 的 Web Search MCP 上游。",
-          "web_reader": "网页阅读",
-          "web_reader_tooltip": "启用后开放 /mcp/web_reader/mcp，并转发到 z.ai 的 Web Reader MCP 上游。",
-          "vision": "视觉",
-          "vision_tooltip": "启用后开放 /mcp/zai-mcp-server/mcp（本地 MCP 服务），提供视觉相关工具能力，并通过 z.ai 执行。",
-          "local_endpoints": "本地地址（在 MCP 客户端中配置以下 URL）：",
-          "local_endpoints_tooltip": "把这些 URL 填到你的 MCP 客户端里即可。它们使用同一个代理端口，并遵循当前的鉴权策略。"
-        }
-      },
       "request_timeout": "请求超时",
       "request_timeout_tooltip": "代理等待上游响应的最大时间（秒），包含流式输出。长文本/长推理可适当调大；修改后需重启生效。",
       "request_timeout_hint": "默认 120 秒，范围 30-7200 秒。修改后需重启服务生效。",
@@ -829,103 +770,7 @@
         "context_compression_threshold_l2_tooltip": "压缩早期的思维链内容，保留签名。建议值: 0.55 (55%)",
         "context_compression_threshold_l3": "L3 压缩阈值 (摘要重置)",
         "context_compression_threshold_l3_tooltip": "强制生成 XML 状态摘要并重置会话。这是最省 token 的手段。建议值: 0.7 (70%)"
-      },
-      "opencode_sync": {
-        "card_title": "OpenCode",
-        "status": {
-          "detecting": "检测中...",
-          "installed": "已安装 ({{version}})",
-          "not_installed": "未安装",
-          "synced": "已同步",
-          "not_synced": "未同步",
-          "current_base_url": "当前接口地址 (BASE URL)"
-        },
-        "sync_accounts": "同步账号到 antigravity-accounts.json",
-        "btn_sync": "立即同步配置",
-        "btn_view": "查看配置",
-        "btn_restore": "还原配置",
-        "btn_restore_backup": "从备份还原",
-        "btn_clear": "清除配置",
-        "clear_confirm_title": "确认清除配置",
-        "clear_confirm_message": "确定要清除 OpenCode 配置吗？这将删除配置文件。",
-        "toast": {
-          "config_missing": "请先生成 API Key 并启动服务",
-          "sync_success": "OpenCode 配置同步成功",
-          "sync_error": "OpenCode 同步失败: {{error}}",
-          "clear_success": "OpenCode 配置已清除",
-          "clear_error": "清除 OpenCode 配置失败: {{error}}"
-        },
-        "modal": {
-          "view_title": "OpenCode 配置文件预览",
-          "copy_success": "配置已复制"
-        },
-        "sync_confirm_title": "确认同步",
-        "sync_confirm_message": "将根据当前反代设置覆盖 OpenCode 配置。确定继续？",
-        "restore_confirm": "确定要将 OpenCode 还原为默认配置吗？",
-        "restore_backup_confirm": "确定要从备份还原 OpenCode 配置吗？",
-        "modal_title": "选择 OpenCode 模型",
-        "select_models": "选择要同步的模型",
-        "auth_plugin_warning": "检测到 opencode-antigravity-auth 插件。同步仅会创建 antigravity-manager provider，不会覆盖 google provider/plugin。",
-        "btn_confirm_sync": "确认同步",
-        "custom_base_url_label": "自定义 Manager BaseURL",
-        "custom_base_url_desc": "适用于 Docker Compose 网络环境",
-        "custom_base_url_reset": "重置"
-      },
-      "droid_sync": {
-        "modal_title": "添加模型到 Droid",
-        "modal_desc": "选中的模型将作为 customModels 写入 settings.json",
-        "selected": "已选",
-        "btn_confirm_sync": "添加所选模型",
-        "toast": {
-          "no_models_selected": "请至少选择一个模型",
-          "sync_success_count": "已添加 {{count}} 个模型到 Droid",
-          "sync_error": "同步失败: {{error}}"
-        }
       }
-    },
-    "cloudflared": {
-      "title": "公网访问 (Cloudflared)",
-      "subtitle": "通过 Cloudflare 隧道将本地服务暴露到公网",
-      "not_installed": "Cloudflared 未安装",
-      "install_hint": "Cloudflared 是 Cloudflare 提供的免费隧道工具,可将本地反代服务暴露到公网,无需公网IP或端口映射。点击下方按钮一键下载安装。",
-      "install": "一键安装",
-      "installing": "安装中...",
-      "install_success": "Cloudflared 安装成功",
-      "install_failed": "安装失败: {{error}}",
-      "installed": "已安装",
-      "version": "版本",
-      "mode_label": "隧道模式",
-      "mode_quick": "快速隧道",
-      "mode_quick_desc": "自动生成临时 URL (*.trycloudflare.com),无需账号,重启后URL会变化",
-      "mode_auth": "命名隧道",
-      "mode_auth_desc": "使用 Cloudflare 账号 Token,支持自定义域名,URL固定不变",
-      "token": "隧道 Token",
-      "token_placeholder": "粘贴您的 Cloudflare Tunnel Token",
-      "token_hint": "从 Cloudflare Zero Trust 控制台获取",
-      "token_required": "命名隧道模式需要提供 Token",
-      "use_http2": "使用 HTTP/2",
-      "use_http2_desc": "兼容性更好,推荐中国大陆用户开启",
-      "status_label": "隧道状态",
-      "status_stopped": "未运行",
-      "status_starting": "启动中...",
-      "status_running": "运行中",
-      "status_stopping": "停止中...",
-      "status_error": "错误",
-      "public_url": "公网地址",
-      "public_url_placeholder": "隧道启动后将显示公网访问地址",
-      "copy_url": "复制地址",
-      "url_copied": "地址已复制",
-      "start_tunnel": "启动隧道",
-      "stop_tunnel": "停止隧道",
-      "running": "隧道运行中",
-      "started": "隧道已启动",
-      "stopped": "隧道已停止",
-      "start_failed": "启动失败: {{error}}",
-      "stop_failed": "停止失败: {{error}}",
-      "require_proxy_running": "请先启动本地反代服务,再开启隧道",
-      "connection_info": "连接信息",
-      "local_port": "本地端口",
-      "tunnel_protocol": "隧道协议"
     },
     "example": {
       "title": "使用示例",
@@ -1101,36 +946,6 @@
       "model_id": "模型 ID",
       "description": "描述",
       "action": "操作"
-    },
-    "cli_sync": {
-      "title": "CLI 配置一键同步",
-      "subtitle": "快速将当前 API 服务地址与 API 密钥同步到本地 AI CLI 工具中",
-      "card_title": "{{name}} 配置",
-      "status": {
-        "not_installed": "未检测到安装",
-        "installed": "v{{version}}",
-        "synced": "已指向本项目",
-        "not_synced": "未同步",
-        "detecting": "检测中...",
-        "current_base_url": "当前接口地址 (Base URL)"
-      },
-      "model_select": "选择同步模型",
-      "btn_sync": "立即同步配置",
-      "btn_view": "查看当前配置",
-      "btn_restore": "恢复默认配置",
-      "btn_restore_backup": "恢复原有配置",
-      "restore_confirm": "确定要将 {{name}} 的配置恢复为官方默认地址吗？",
-      "restore_backup_confirm": "检测到旧的配置文件备份，确定要还原吗？",
-      "modal": {
-        "view_title": "{{name}} 配置文件内容",
-        "copy_success": "配置内容已复制"
-      },
-      "toast": {
-        "sync_success": "同步成功！{{name}} 已准备就绪。",
-        "sync_error": "同步失败：{{error}}"
-      },
-      "sync_confirm_title": "同步确认",
-      "sync_confirm_message": "即将为您同步 {{name}} 的配置。⚠️ 注意：此操作将覆盖您本地已有的配置文件（如登录状态、API Key 等）。确定要继续吗？"
     }
   },
   "monitor": {
