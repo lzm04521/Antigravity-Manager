@@ -16,7 +16,6 @@ export interface ProxyConfig {
     enable_logging: boolean;
     debug_logging?: DebugLoggingConfig;
     upstream_proxy: UpstreamProxyConfig;
-    zai?: ZaiConfig;
     scheduling?: StickySessionConfig;
     experimental?: ExperimentalConfig;
     user_agent_override?: string;
@@ -70,31 +69,6 @@ export type SchedulingMode = 'CacheFirst' | 'Balance' | 'PerformanceFirst';
 export interface StickySessionConfig {
     mode: SchedulingMode;
     max_wait_seconds: number;
-}
-
-export type ZaiDispatchMode = 'off' | 'exclusive' | 'pooled' | 'fallback';
-
-export interface ZaiMcpConfig {
-    enabled: boolean;
-    web_search_enabled: boolean;
-    web_reader_enabled: boolean;
-    vision_enabled: boolean;
-}
-
-export interface ZaiModelDefaults {
-    opus: string;
-    sonnet: string;
-    haiku: string;
-}
-
-export interface ZaiConfig {
-    enabled: boolean;
-    base_url: string;
-    api_key: string;
-    dispatch_mode: ZaiDispatchMode;
-    model_mapping?: Record<string, string>;
-    models: ZaiModelDefaults;
-    mcp: ZaiMcpConfig;
 }
 
 export interface ScheduledWarmupConfig {
