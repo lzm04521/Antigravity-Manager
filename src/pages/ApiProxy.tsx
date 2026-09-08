@@ -31,7 +31,6 @@ import { showToast } from '../components/common/ToastContainer';
 import { cn } from '../utils/cn';
 import { useProxyModels } from '../hooks/useProxyModels';
 import GroupedSelect, { SelectOption } from '../components/common/GroupedSelect';
-import { CliSyncCard } from '../components/proxy/CliSyncCard';
 import DebouncedSlider from '../components/common/DebouncedSlider';
 import { listAccounts } from '../services/accountService';
 import CircuitBreaker from '../components/settings/CircuitBreaker';
@@ -1522,17 +1521,6 @@ print(response.choices[0].message.content)`;
                 {
                     !configLoading && !configError && appConfig && (
                         <div className="space-y-4">
-                            <CollapsibleCard
-                                title={t('proxy.cli_sync.title', { defaultValue: 'CLI Sync' })}
-                                icon={<Terminal size={18} className="text-gray-500" />}
-                                defaultExpanded={false}
-                            >
-                                <CliSyncCard
-                                    proxyUrl={status.running ? status.base_url : `http://127.0.0.1:${appConfig.proxy.port || 8045}`}
-                                    apiKey={appConfig.proxy.api_key}
-                                />
-                            </CollapsibleCard>
-
                             {/* z.ai (GLM) Dispatcher */}
                             <CollapsibleCard
                                 title={t('proxy.config.zai.title')}

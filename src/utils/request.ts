@@ -61,18 +61,7 @@ const COMMAND_MAPPING: Record<string, { url: string; method: 'GET' | 'POST' | 'D
   'get_debug_console_logs': { url: '/api/debug/logs', method: 'GET' },
   'clear_debug_console_logs': { url: '/api/debug/logs/clear', method: 'POST' },
 
-  // CLI Sync
-  'get_cli_sync_status': { url: '/api/proxy/cli/status', method: 'POST' },
-  'execute_cli_sync': { url: '/api/proxy/cli/sync', method: 'POST' },
-  'execute_cli_restore': { url: '/api/proxy/cli/restore', method: 'POST' },
-  'get_cli_config_content': { url: '/api/proxy/cli/config', method: 'POST' },
-
-  // OpenCode Sync
-  'get_opencode_sync_status': { url: '/api/proxy/opencode/status', method: 'POST' },
-  'execute_opencode_sync': { url: '/api/proxy/opencode/sync', method: 'POST' },
-  'execute_opencode_restore': { url: '/api/proxy/opencode/restore', method: 'POST' },
-  'execute_opencode_clear': { url: '/api/proxy/opencode/clear', method: 'POST' },
-  'get_opencode_config_content': { url: '/api/proxy/opencode/config', method: 'POST' },
+  // Canonical Model Families (used by model selector)
   'get_canonical_families': { url: '/api/proxy/opencode/families', method: 'GET' },
 
   // Stats
