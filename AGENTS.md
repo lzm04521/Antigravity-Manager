@@ -61,7 +61,7 @@ Antigravity Tools —— 专业级 AI 账号管理与协议代理系统（Tauri 
 - Tauri 2：`#[tauri::command]` 后端命令 + 前端 `invoke`（经 `src/utils/request.ts`）。
 - React 19 + react-router 7 + zustand 5 + antd 5（@lobehub/ui）+ Tailwind 3 + i18next。
 - Rust：tokio 异步运行时、reqwest HTTP 客户端。
-- CI/发布：GitHub Actions（ci.yml、release.yml、deploy-pages.yml）、Homebrew Casks、`@tauri-apps/plugin-updater`。
+- CI/发布：GitHub Actions（ci.yml、deploy-pages.yml、release.yml：push `v*` tag 触发 Windows 构建并创建 GitHub Release）、`@tauri-apps/plugin-updater`。
 
 ## 配置与集成
 
