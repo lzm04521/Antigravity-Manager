@@ -1949,11 +1949,11 @@ mod tests {
 
     #[test]
     fn optimize_patch_converts_unified_diff_headers_to_v4a_update() {
-        let v4a = "*** Begin Patch\n--- C:/Users/32057/Documents/Codex/2026-07-05/zai/data_summary.md\n+++ C:/Users/32057/Documents/Codex/2026-07-05/zai/data_summary.md\n@@ -7,4 +7,5 @@\n old\n+new\n*** End Patch\n";
+        let v4a = "*** Begin Patch\n--- C:/Users/32057/Documents/Codex/2026-07-05/notes/data_summary.md\n+++ C:/Users/32057/Documents/Codex/2026-07-05/notes/data_summary.md\n@@ -7,4 +7,5 @@\n old\n+new\n*** End Patch\n";
         let (out, reps) = optimize_patch(v4a, None, true);
         assert!(
             out.contains(
-                "*** Update File: C:/Users/32057/Documents/Codex/2026-07-05/zai/data_summary.md"
+                "*** Update File: C:/Users/32057/Documents/Codex/2026-07-05/notes/data_summary.md"
             ),
             "{out}"
         );
@@ -1968,11 +1968,11 @@ mod tests {
 
     #[test]
     fn optimize_patch_converts_file_header_to_v4a_update() {
-        let v4a = "*** Begin Patch\nfile: C:\\Users\\32057\\Documents\\Codex\\2026-07-05\\zai\\data_summary.md\n@@\n-old\n+new\n*** End Patch\n";
+        let v4a = "*** Begin Patch\nfile: C:\\Users\\32057\\Documents\\Codex\\2026-07-05\\notes\\data_summary.md\n@@\n-old\n+new\n*** End Patch\n";
         let (out, reps) = optimize_patch(v4a, None, true);
         assert!(
             out.contains(
-                "*** Update File: C:\\Users\\32057\\Documents\\Codex\\2026-07-05\\zai\\data_summary.md"
+                "*** Update File: C:\\Users\\32057\\Documents\\Codex\\2026-07-05\\notes\\data_summary.md"
             ),
             "{out}"
         );

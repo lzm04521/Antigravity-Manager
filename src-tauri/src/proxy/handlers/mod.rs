@@ -5,6 +5,5 @@ pub mod audio; // 音频转录处理器
 pub mod claude;
 pub mod common;
 pub mod gemini;
-pub mod mcp;
 pub mod openai;
 pub mod warmup; // 预热处理器
