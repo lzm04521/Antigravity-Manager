@@ -489,7 +489,7 @@ pub async fn handle_messages(
     clean_cache_control_from_messages(&mut request.messages);
 
     // [FIX #813] 合并连续的同角色消息 (Consecutive User Messages)
-    // 这对于 z.ai (Anthropic 直接转发) 路径至关重要，因为原始结构必须符合协议
+    // 确保原始消息结构符合协议要求
     merge_consecutive_messages(&mut request.messages);
 
     // Get model family for signature validation

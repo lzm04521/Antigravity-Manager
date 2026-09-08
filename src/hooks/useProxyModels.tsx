@@ -1,14 +1,7 @@
-import { useMemo, useEffect, useState } from 'react';
+import { useMemo, useEffect } from 'react';
 import { MODEL_CONFIG } from '../config/modelConfig';
 import { useAccountStore } from '../stores/useAccountStore';
 import { Bot, Sparkles } from 'lucide-react';
-import { request } from '../utils/request';
-
-export interface CanonicalFamilyDto {
-    canonical_id: string;
-    display_name: string;
-    match_ids: string[];
-}
 
 const ALIAS_TO_CANONICAL: Record<string, { id: string; name: string; group: string }> = {
     // Gemini 3
@@ -69,23 +62,11 @@ const ALIAS_TO_CANONICAL: Record<string, { id: string; name: string; group: stri
 
 export const useProxyModels = () => {
     const { accounts, fetchAccounts } = useAccountStore();
-    const [canonicalFamilies, setCanonicalFamilies] = useState<CanonicalFamilyDto[]>([]);
 
     useEffect(() => {
         if (accounts.length === 0) {
             fetchAccounts();
         }
-
-        let cancelled = false;
-        request<CanonicalFamilyDto[]>('get_canonical_families')
-            .then(data => {
-                if (!cancelled && data) {
-                    setCanonicalFamilies(data);
-                }
-            })
-            .catch(err => console.error('Failed to fetch canonical families:', err));
-
-        return () => { cancelled = true; };
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     const models = useMemo(() => {
@@ -165,7 +146,7 @@ export const useProxyModels = () => {
                 if (orderA !== orderB) return orderA - orderB;
                 return a.name.localeCompare(b.name);
             });
-    }, [accounts, canonicalFamilies]);
+    }, [accounts]);
 
-    return { models, canonicalFamilies };
+    return { models };
 };
