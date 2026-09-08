@@ -285,7 +285,6 @@ pub fn run() {
             // Let's check `modules::logger`.
 
             let proxy_state = commands::proxy::ProxyServiceState::new();
-            let cf_state = Arc::new(commands::cloudflared::CloudflaredState::new());
 
             // Load config
             match modules::config::load_app_config() {
@@ -390,7 +389,6 @@ pub fn run() {
                         config.proxy,
                         &proxy_state,
                         crate::modules::integration::SystemManager::Headless,
-                        cf_state.clone(),
                     ).await {
                         error!("Failed to start proxy service in headless mode: {}", e);
                         std::process::exit(1);
@@ -445,7 +443,6 @@ pub fn run() {
             });
         }))
         .manage(commands::proxy::ProxyServiceState::new())
-        .manage(commands::cloudflared::CloudflaredState::new())
         .manage(AppRuntimeFlags { tray_enabled })
         .setup(|app| {
             info!("Setup starting...");
@@ -491,7 +488,6 @@ pub fn run() {
                 // Load config
                 if let Ok(config) = modules::config::load_app_config() {
                     let state = handle.state::<commands::proxy::ProxyServiceState>();
-                    let cf_state = handle.state::<commands::cloudflared::CloudflaredState>();
                     let integration =
                         crate::modules::integration::SystemManager::Desktop(handle.clone());
 
@@ -500,7 +496,6 @@ pub fn run() {
                         config.proxy.clone(),
                         &state,
                         integration.clone(),
-                        Arc::new(cf_state.inner().clone()),
                     )
                     .await
                     {
@@ -518,7 +513,6 @@ pub fn run() {
                             config.proxy,
                             &state,
                             integration,
-                            Arc::new(cf_state.inner().clone()),
                         )
                         .await
                         {
@@ -701,12 +695,6 @@ pub fn run() {
             commands::security::check_ip_in_whitelist,
             commands::security::get_security_config,
             commands::security::update_security_config,
-            // Cloudflared commands
-            commands::cloudflared::cloudflared_check,
-            commands::cloudflared::cloudflared_install,
-            commands::cloudflared::cloudflared_start,
-            commands::cloudflared::cloudflared_stop,
-            commands::cloudflared::cloudflared_get_status,
             // Debug console commands
             modules::log_bridge::enable_debug_console,
             modules::log_bridge::disable_debug_console,
