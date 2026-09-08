@@ -8,7 +8,7 @@
 
   <p>
     <a href="https://github.com/lzm04521/Antigravity-Manager/releases">
-      <img src="https://img.shields.io/badge/Version-4.6.9-blue?style=flat-square" alt="Version">
+      <img src="https://img.shields.io/badge/Version-4.7.0-local1-blue?style=flat-square" alt="Version">
     </a>
     <img src="https://img.shields.io/badge/Tauri-v2-orange?style=flat-square" alt="Tauri">
     <img src="https://img.shields.io/badge/Backend-Rust-red?style=flat-square" alt="Rust">
@@ -63,8 +63,8 @@ Produces the desktop installer. Build configuration lives in `src-tauri/tauri.co
 Push a `v*` tag to trigger GitHub Actions, which builds the Windows installer and creates a GitHub Release:
 
 ```bash
-git tag v4.6.9
-git push origin v4.6.9
+git tag v4.7.0-local1
+git push origin v4.7.0-local1
 ```
 
 See [Releases](https://github.com/lzm04521/Antigravity-Manager/releases) for artifacts.
