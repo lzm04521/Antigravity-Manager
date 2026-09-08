@@ -8,7 +8,7 @@
 
   <p>
     <a href="https://github.com/lzm04521/Antigravity-Manager/releases">
-      <img src="https://img.shields.io/badge/Version-4.7.0-local1-blue?style=flat-square" alt="Version">
+      <img src="https://img.shields.io/badge/Version-4.6.9-local1-blue?style=flat-square" alt="Version">
     </a>
     <img src="https://img.shields.io/badge/Tauri-v2-orange?style=flat-square" alt="Tauri">
     <img src="https://img.shields.io/badge/Backend-Rust-red?style=flat-square" alt="Rust">
@@ -63,8 +63,8 @@ npm run tauri build
 推送 `v*` 格式的 tag 触发 GitHub Actions 自动构建 Windows 安装包并创建 GitHub Release：
 
 ```bash
-git tag v4.7.0-local1
-git push origin v4.7.0-local1
+git tag v4.6.9-local1
+git push origin v4.6.9-local1
 ```
 
 发布产物见 [Releases](https://github.com/lzm04521/Antigravity-Manager/releases)。

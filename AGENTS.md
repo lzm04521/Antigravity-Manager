@@ -67,7 +67,7 @@ Antigravity Tools —— 专业级 AI 账号管理与协议代理系统（Tauri 
 
 - 构建配置：`src-tauri/tauri.conf.json`、`src-tauri/Cargo.toml`、`vite.config.ts`、`tailwind.config.js`、`tsconfig.json`。
 - 运行时配置：前端 `useConfigStore` 加载语言、代理等设置；本地数据存于应用数据目录。
-- 版本发布：版本号同步维护于 `package.json` 与 `src-tauri/tauri.conf.json`（当前 4.7.0-local1）；推送 `v*` tag 触发 GitHub Actions 自动构建 Windows 安装包并创建 GitHub Release；变更记录见 `CHANGELOG.md` / `CHANGELOG_EN.md`。
+- 版本发布：版本号同步维护于 `package.json` 与 `src-tauri/tauri.conf.json`（当前 4.6.9-local1）；推送 `v*` tag 触发 GitHub Actions 自动构建 Windows 安装包并创建 GitHub Release；变更记录见 `CHANGELOG.md` / `CHANGELOG_EN.md`。
 
 ## 上游合并策略
 
